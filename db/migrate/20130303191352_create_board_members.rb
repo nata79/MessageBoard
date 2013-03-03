@@ -1,7 +1,7 @@
 class CreateBoardMembers < ActiveRecord::Migration
   def change
     create_table :board_members do |t|
-      t.string :role
+      t.string :role, default: 'normal'
       t.references :user
       t.references :board
 
