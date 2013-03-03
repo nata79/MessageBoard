@@ -26,20 +26,23 @@ ActiveRecord::Schema.define(:version => 20130303191352) do
 
   create_table "boards", :force => true do |t|
     t.string   "name"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "boards", ["user_id"], :name => "index_boards_on_user_id"
 
   create_table "messages", :force => true do |t|
     t.text     "content"
-    t.integer  "user_id"
+    t.integer  "board_member_id"
     t.integer  "board_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
   add_index "messages", ["board_id"], :name => "index_messages_on_board_id"
-  add_index "messages", ["user_id"], :name => "index_messages_on_user_id"
+  add_index "messages", ["board_member_id"], :name => "index_messages_on_board_member_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false

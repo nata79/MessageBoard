@@ -13,3 +13,8 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
+gem "rspec-rails", :group => [:test, :development]
+group :test do
+  gem "factory_girl_rails"
+end
