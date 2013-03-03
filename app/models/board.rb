@@ -5,6 +5,8 @@ class Board < ActiveRecord::Base
   has_many :members, class_name: 'BoardMember', dependent: :destroy
   has_many :messages, dependent: :destroy
 
+  validates :name, :user, presence: true
+
   after_create :set_creator_as_admin
 
   def is_member? user
