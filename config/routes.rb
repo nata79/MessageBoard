@@ -11,5 +11,6 @@ MessageBoard::Application.routes.draw do
   # Admin Board Member Access Level
   resources :boards, only: [:destroy], module: 'board_access/admin' do
     resources :messages, only: [:destroy]
+    resources :board_members, only: [:create]
   end
 end
