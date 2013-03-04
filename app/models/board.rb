@@ -13,6 +13,10 @@ class Board < ActiveRecord::Base
     members.exists? user_id: user.id
   end
 
+  def is_admin? user
+    members.exists? user_id: user.id, role: 'admin'
+  end
+
   def member_from_user user
     members.where(user_id: user.id).first
   end
